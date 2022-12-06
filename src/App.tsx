@@ -34,12 +34,14 @@ function App() {
 	});
 
 	return (
-		<div className="App">
-			{isDataFetched ? (
-				<Table headersList={headers} bodyInfoList={bodyInfo} />
-			) : (
-				<section className=""></section>
-			)}
+		<div className=" ">
+			<section className=" px-28 py-16 w-full">
+				{isDataFetched ? (
+					<Table headersList={headers} bodyInfoList={bodyInfo} />
+				) : (
+					<section className=""></section>
+				)}
+			</section>
 		</div>
 	);
 }

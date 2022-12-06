@@ -18,12 +18,12 @@ const Table = ({ headersList, bodyInfoList }: TableProps) => {
 	};
 
 	return (
-		<table className="">
-			<thead className=" border-spacing-1">
+		<table className=" w-full grid grid-cols-[.2fr_repeat(2,_1fr)_1.3fr_repeat(4,_1fr)] gap-1">
+			<thead className="contents">
 				{rowGenerator(headersList, true)}
 			</thead>
 
-			<tbody className="">
+			<tbody className="contents">
 				{bodyInfoList.map(infoBlock => {
 					const unsortedData: Array<string | number> =
 						Object.values(infoBlock);

@@ -6,22 +6,34 @@ import TableRowProps from './TableRowTypes';
 const TableRow = ({ dataForRow, isHeadingRow }: TableRowProps) => {
 	const cellGenerator = (
 		isHeadingParam: boolean,
-		cellData: string | number
+		cellData: string | number,
+		specialClasses?: string
 	): ReactNode => (
 		<TableCell
 			key={RandomKey()}
 			isHeading={isHeadingParam}
 			value={cellData}
+			specialStyles={specialClasses}
 		/>
 	);
 
 	return (
-		<tr>
-			{dataForRow.map((dataEl: string | number): ReactNode => {
-				return isHeadingRow
-					? cellGenerator(true, dataEl)
-					: cellGenerator(false, dataEl);
-			})}
+		<tr className="contents">
+			{dataForRow.map(
+				(dataEl: string | number, idx: number): ReactNode => {
+					if (idx === 0 && !isHeadingRow) {
+						return cellGenerator(
+							false,
+							dataEl,
+							'bg-slate-700 text-white'
+						);
+					}
+
+					return isHeadingRow
+						? cellGenerator(true, dataEl)
+						: cellGenerator(false, dataEl);
+				}
+			)}
 		</tr>
 	);
 };
